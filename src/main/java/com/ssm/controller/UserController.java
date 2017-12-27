@@ -49,7 +49,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 		
-		return "userList";//返回那个页面，配置会自动加上后缀.jsp
+		return "userList";
 	}
 	
 	/**
