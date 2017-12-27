@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace的值对应dao的路径 -->
+<mapper namespace="com.ssm.dao.IUserDao">
+	
+	<!-- 实体bean和数据表的映射  property表示实体bean的属性，column表示表里面的列-->
+	<resultMap type="com.ssm.bean.UserBean" id="userMap">
+		<id property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+	</resultMap>
+	
+
+	<!-- 查询用户列表-->
+	<select id="getUserList" resultMap="userMap" parameterType="Map">
+		SELECT id,username,password FROM `t_user`
+	</select>
+	
+	<!-- 新增用户 -->
+	<insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+		insert into `t_user`(username,password) values(#{username},#{password})
+	</insert>
+	
+</mapper>
